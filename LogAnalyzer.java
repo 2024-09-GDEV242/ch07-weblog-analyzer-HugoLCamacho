@@ -55,15 +55,36 @@ public class LogAnalyzer
 
         
         int highestHour = 0;
+        int hourCompare = 0;
 
         for (int i = 0; i < hourCounts.length; i++ ){
-            if(hourCounts[i] > highestHour ){
-
+            if(hourCounts[i] > hourCompare ){
+                hourCompare = hourCounts[i]; 
                 highestHour = i;
             }
         }
 
         return highestHour;
+
+    }
+    
+    /**
+     * @returns the hour that the least people access the site
+     */
+    public int quietestHour(){
+
+        
+        int lowestHour = 0;
+        int lowHourCompare = hourCounts[0];
+
+        for (int i = 0; i < hourCounts.length; i++ ){
+            if(hourCounts[i] < lowHourCompare ){
+                lowHourCompare = hourCounts[i];
+                lowestHour = i;
+            }
+        }
+
+        return lowestHour;
 
     }
 
