@@ -20,7 +20,7 @@ public class LogAnalyzer
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader("demo.log");
+        reader = new LogfileReader("weblog.txt");
     }
 
     /**
@@ -35,6 +35,19 @@ public class LogAnalyzer
         }
     }
 
+    /**
+     * @returns the amount of times that the site has been accessed 
+     */
+    public int numberOfAccesses(){
+        int numberOfLines = 0;
+        
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            numberOfLines++;
+        }
+     return numberOfLines;
+    }
+    
     /**
      * Print the hourly counts.
      * These should have been set with a prior
