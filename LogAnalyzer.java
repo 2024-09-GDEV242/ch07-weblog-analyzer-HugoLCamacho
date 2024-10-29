@@ -40,14 +40,33 @@ public class LogAnalyzer
      */
     public int numberOfAccesses(){
         int numberOfLines = 0;
-        
+
         while(reader.hasNext()) {
             LogEntry entry = reader.next();
             numberOfLines++;
         }
-     return numberOfLines;
+        return numberOfLines;
     }
-    
+
+    /**
+     * @returns the hour that most people access the site
+     */
+    public int busiestHour(){
+
+        
+        int highestHour = 0;
+
+        for (int i = 0; i < hourCounts.length; i++ ){
+            if(hourCounts[i] > highestHour ){
+
+                highestHour = i;
+            }
+        }
+
+        return highestHour;
+
+    }
+
     /**
      * Print the hourly counts.
      * These should have been set with a prior
@@ -60,7 +79,7 @@ public class LogAnalyzer
             System.out.println(hour + ": " + hourCounts[hour]);
         }
     }
-    
+
     /**
      * Print the lines of data read by the LogfileReader
      */
