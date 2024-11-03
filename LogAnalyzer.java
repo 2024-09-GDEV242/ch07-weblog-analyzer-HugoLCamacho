@@ -8,6 +8,9 @@ public class LogAnalyzer
 {
     // Where to calculate the hourly access counts.
     private int[] hourCounts;
+    private int[] dayCounts;
+    private int[] monthCounts;
+    private int[] yearCounts;
     // Use a LogfileReader to access the data.
     private LogfileReader reader;
 
@@ -19,6 +22,9 @@ public class LogAnalyzer
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
+        dayCounts = new int[28];
+        monthCounts = new int [24];
+        yearCounts = new int [12];
         // Create the reader to obtain the data.
         reader = new LogfileReader("weblog.txt");
     }
@@ -36,6 +42,62 @@ public class LogAnalyzer
         
         reader.reset();
     }
+    
+     /**
+     * Analyze the hourly access data from the log file.
+     */
+    public void analyzeDailyData()
+    {
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            int day = entry.getDay() - 1;
+            dayCounts[day]++;
+        }
+        
+        reader.reset();
+    }
+    
+    /**
+     * @returns the day that most people access the site
+     */
+    public String busiestDay(){
+
+        
+        int highestDay = 0;
+        int dayCompare = 0;
+
+        for (int i = 0; i < dayCounts.length; i++ ){
+            if(dayCounts[i] > dayCompare ){
+                dayCompare = dayCounts[i]; 
+                highestDay = i;
+            }
+        }
+
+        return String.format("Most people visted the site on day %d",(highestDay + 1) );
+
+    }
+    
+     /**
+     * @returns the day that the least people access the site
+     */
+    public String quietestDay(){
+
+        
+        int lowestDay = 0;
+        int lowDayCompare = dayCounts[0];
+
+        for (int i = 0; i < dayCounts.length - 1; i++ ){
+            if(dayCounts[i] < lowDayCompare ){
+                lowDayCompare = dayCounts[i];
+                lowestDay = i;
+            }
+        }
+
+       return String.format("Day %d has the least amount of trafic compared to other days",(lowestDay + 1));
+
+    }
+    
+    
 
     /**
      * @returns the amount of times that the site has been accessed 

@@ -47,7 +47,7 @@ public class LogEntry implements Comparable<LogEntry>
      * Create a LogEntry from the individual components.
      * @param year The year
      * @param month The month (1-12)
-     * @param day The day (1-31)
+     * @param day The day (1-28)
      * @param hour The hour (0-23)
      * @param minute The minute (0-59)
      */
