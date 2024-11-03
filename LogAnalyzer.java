@@ -17,7 +17,7 @@ public class LogAnalyzer
     /**
      * Create an object to analyze hourly web accesses.
      */
-    public LogAnalyzer()
+    public LogAnalyzer(String logFile)
     { 
         // Create the array object to hold the hourly
         // access counts.
@@ -26,7 +26,7 @@ public class LogAnalyzer
         monthCounts = new int [12];
         yearCounts = new int [12];
         // Create the reader to obtain the data.
-        reader = new LogfileReader("weblog.txt");
+        reader = new LogfileReader(logFile);
     }
 
     /**
