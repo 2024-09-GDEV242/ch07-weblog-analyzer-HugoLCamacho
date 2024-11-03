@@ -33,6 +33,8 @@ public class LogAnalyzer
             int hour = entry.getHour();
             hourCounts[hour]++;
         }
+        
+        reader.reset();
     }
 
     /**
@@ -45,6 +47,8 @@ public class LogAnalyzer
             LogEntry entry = reader.next();
             numberOfLines++;
         }
+        
+        reader.reset();
         return numberOfLines;
     }
 
