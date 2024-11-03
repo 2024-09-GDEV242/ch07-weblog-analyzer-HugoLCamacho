@@ -43,6 +43,46 @@ public class LogAnalyzer
         reader.reset();
     }
     
+    /**
+     * Analyze the Monthly access data from the log file.
+     */
+    public void analyzeMonthlyData()
+    {
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            int month = entry.getMonth() - 1;
+            monthCounts[month]++;
+        }
+        
+        reader.reset();
+    }
+    
+       /**
+     * Analyze the Yearly access data from the log file.
+     */
+    public void analyzeYearlyData()
+    {
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            int year = entry.getYear() - 2015;
+            yearCounts[year]++;
+        }
+        
+        reader.reset();
+    }
+    
+    /**
+     * will analyze year, month, day, and hour
+     */
+    public void analyzeData(){
+    
+    analyzeYearlyData();
+    analyzeMonthlyData();
+    analyzeHourlyData();
+    analyzeDailyData();
+    
+    }
+    
      /**
      * Analyze the hourly access data from the log file.
      */
@@ -96,6 +136,18 @@ public class LogAnalyzer
        return String.format("Day %d has the least amount of trafic compared to other days",(lowestDay + 1));
 
     }
+    
+   //public String totalAccessesPerMonth(){
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //}
     
     
 
