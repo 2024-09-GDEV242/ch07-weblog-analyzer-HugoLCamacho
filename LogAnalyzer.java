@@ -16,6 +16,7 @@ public class LogAnalyzer
 
     /**
      * Create an object to analyze hourly web accesses.
+     * must use full file name with extenstion and surround with quotes when entering string 
      */
     public LogAnalyzer(String logFile)
     { 
@@ -193,6 +194,47 @@ public class LogAnalyzer
         }
 
        return String.format("Hour %d has the least amount of trafic compared to other hours",lowestHour );
+
+    }
+    
+    
+     /**
+     * @returns the month that the least people access the site
+     */
+    public String quietestMonth(){
+
+        
+        int lowestMonth = 0;
+        int lowMonthCompare = monthCounts[0];
+
+        for (int i = 0; i < monthCounts.length; i++ ){
+            if(monthCounts[i] < lowMonthCompare ){
+                lowMonthCompare = monthCounts[i];
+                lowestMonth = i + 1;
+            }
+        }
+
+       return String.format("Month %d has the least amount of trafic compared to other months",lowestMonth );
+
+    }
+    
+    /**
+     * @returns the month that the most people access the site
+     */
+    public String busiestMonth(){
+
+        
+        int highestMonth = 0;
+        int highMonthCompare = monthCounts[0];
+
+        for (int i = 0; i < monthCounts.length; i++ ){
+            if(monthCounts[i] > highMonthCompare ){
+                highMonthCompare = monthCounts[i];
+               highestMonth = i + 1;
+            }
+        }
+
+       return String.format("Month %d has the most amount of trafic compared to other months",highestMonth );
 
     }
     
