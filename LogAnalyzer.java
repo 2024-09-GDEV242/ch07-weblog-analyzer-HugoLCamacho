@@ -91,6 +91,33 @@ public class LogAnalyzer
        return String.format("Hour %d has the least amount of trafic compared to other hours",lowestHour );
 
     }
+    
+    
+    /**
+     * Method that finds out which two hour block had the most trafic
+     * @returns A string that details the two hour block that had most trafic
+     */
+    public String busiestTwoHour(){
+    
+    
+        int highHourCompare = (hourCounts[0] + hourCounts[23]);
+        int highHourA = 0;
+        int highHourB = 23;
+        
+        for(int i =0; i < hourCounts.length - 1; i++){
+        if (hourCounts[i] + hourCounts[i +1] > highHourCompare ){
+        highHourCompare = hourCounts[i] + hourCounts[i +1];
+        highHourA = i;
+         highHourB = i + 1;
+        }
+        
+        
+        }
+        return String.format("The busiest two hour block is between the hours of %d and %d",highHourA, highHourB);
+    
+    
+    
+    }
 
     /**
      * Print the hourly counts.
