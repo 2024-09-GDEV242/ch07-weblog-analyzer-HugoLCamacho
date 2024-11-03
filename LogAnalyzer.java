@@ -51,7 +51,7 @@ public class LogAnalyzer
     /**
      * @returns the hour that most people access the site
      */
-    public int busiestHour(){
+    public String busiestHour(){
 
         
         int highestHour = 0;
@@ -64,14 +64,14 @@ public class LogAnalyzer
             }
         }
 
-        return highestHour;
+        return String.format("Most people accessed the site on hour %d",highestHour );
 
     }
     
     /**
      * @returns the hour that the least people access the site
      */
-    public int quietestHour(){
+    public String quietestHour(){
 
         
         int lowestHour = 0;
@@ -84,7 +84,7 @@ public class LogAnalyzer
             }
         }
 
-        return lowestHour;
+       return String.format("Hour %d has the least amount of trafic compared to other hours",lowestHour );
 
     }
 
