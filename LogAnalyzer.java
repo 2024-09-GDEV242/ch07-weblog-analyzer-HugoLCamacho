@@ -23,7 +23,7 @@ public class LogAnalyzer
         // access counts.
         hourCounts = new int[24];
         dayCounts = new int[28];
-        monthCounts = new int [24];
+        monthCounts = new int [12];
         yearCounts = new int [12];
         // Create the reader to obtain the data.
         reader = new LogfileReader("weblog.txt");
@@ -126,7 +126,7 @@ public class LogAnalyzer
         int lowestDay = 0;
         int lowDayCompare = dayCounts[0];
 
-        for (int i = 0; i < dayCounts.length - 1; i++ ){
+        for (int i = 0; i < dayCounts.length ; i++ ){
             if(dayCounts[i] < lowDayCompare ){
                 lowDayCompare = dayCounts[i];
                 lowestDay = i;
@@ -137,17 +137,7 @@ public class LogAnalyzer
 
     }
     
-   //public String totalAccessesPerMonth(){
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //}
+  
     
     
 
@@ -244,6 +234,20 @@ public class LogAnalyzer
         for(int hour = 0; hour < hourCounts.length; hour++) {
             System.out.println(hour + ": " + hourCounts[hour]);
         }
+    }
+    
+    /**
+     * Will print how many times each month had access
+     */
+    public void totalAccessesPerMonth(){
+    System.out.println("Month: Count");
+    for(int month = 0; month < monthCounts.length; month++){
+    
+    System.out.println((month +1) + ": " + monthCounts[month]);
+    
+    }
+    
+    
     }
 
     /**
