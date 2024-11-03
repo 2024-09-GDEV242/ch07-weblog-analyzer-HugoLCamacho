@@ -47,7 +47,7 @@ public class LogEntry implements Comparable<LogEntry>
      * Create a LogEntry from the individual components.
      * @param year The year
      * @param month The month (1-12)
-     * @param day The day (1-31)
+     * @param day The day (1-28)
      * @param hour The hour (0-23)
      * @param minute The minute (0-59)
      */
@@ -79,6 +79,33 @@ public class LogEntry implements Comparable<LogEntry>
     public int getMinute()
     {
         return dataValues[MINUTE];
+    }
+    
+    /***
+     * Return the year
+     * @return the year field from the log line.
+     */
+    public int getYear(){
+    
+    return dataValues[YEAR];
+    }
+    
+    /***
+     * Return the month
+     * @return the month field from the log line.
+     */
+    public int getMonth(){
+    
+    return dataValues[MONTH];
+    }
+    
+    /***
+     * Return the day 
+     * @return the day field from the log line.
+     */
+    public int getDay(){
+    
+    return dataValues[DAY];
     }
     
     /**
